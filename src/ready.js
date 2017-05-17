@@ -157,3 +157,34 @@ function quicksort( array ){
 	});
 	return quicksort(less).concat(base, quicksort(bigger) )
 };
+/**
+ * Checks if Object contains 'mango'
+ * @param obj Object
+ * @returns Bool with result
+ */
+function is_person_seller(obj) {
+    if ( !!obj['mango'] ) {
+        return true;
+    }
+    return false;
+}
+/**
+ * BFS
+ * @param root Object with other objects
+ * @returns String with results of searching;
+ */
+function isSeller(root) {
+    var queue = root;
+    while (Object.keys(queue).length != 0) {
+        for ( item in queue ){
+            if( !is_person_seller(queue[item]) ){
+                let node = queue[item];
+                queue = Object.assign(queue, node);
+            } else {
+                return "HERE COMES DATTT BOIII IN " + item;
+            }
+            delete queue[item];
+        }
+    }
+    return "NOT AT ALL";
+}
