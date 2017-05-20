@@ -26,3 +26,4 @@ let parents = {
     C : null,
     end : null
 }
+export default {graph, parents, costs};

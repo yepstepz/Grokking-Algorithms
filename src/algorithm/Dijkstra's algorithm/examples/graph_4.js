@@ -27,3 +27,4 @@ let costs = {
     C: Infinity,
     end: Infinity
 }
+export default {graph, parents, costs};

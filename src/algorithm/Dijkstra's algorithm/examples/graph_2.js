@@ -1,4 +1,4 @@
-export let graph = {
+let graph = {
     start : {
         C: 5,
         A: 2
@@ -20,17 +20,18 @@ export let graph = {
     },
     end : {}
 }
-export let parents = {
+let parents = {
     C: 'start',
     A: 'start',
     B: null,
     D: null,
     end: null
 }
-export let costs = {
+let costs = {
     C: 5,
     A: 2,
     B: Infinity,
     D: Infinity,
     end: Infinity
 }
+export default {graph, parents, costs};

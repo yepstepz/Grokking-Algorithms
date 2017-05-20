@@ -1,4 +1,3 @@
-export (function(){
 let graph = {
     start: {
         A: 6,
@@ -23,4 +22,4 @@ let costs = {
     B: 2,
     end: Infinity
 }
-})();
+export default {graph, parents, costs};
