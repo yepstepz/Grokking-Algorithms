@@ -38,13 +38,13 @@ function find_lowest_cost_node(costs, checked) {
  * @param {Array} parents
  * @returns {string}
  */
-function count_way( parents ){
+function count_way(parents) {
     let way = Object.assign(parents);
     let parent = parents['end'];
-    let result = ['start','end'];
+    let result = ['start', 'end'];
     delete way['end'];
-    while ( parent != 'start' ) {
-        result.splice(1,0,parent)
+    while (parent != 'start') {
+        result.splice(1, 0, parent)
         parent = way[parent];
     }
     return result.join(' → ');
@@ -59,8 +59,10 @@ function count_way( parents ){
  * @returns {string} cheapest way (ex. "start → end")
  */
 function cheap_way(graph, costs, parents) {
+    console.log(graph, costs, parents);
     let checked = [];
     let node = find_lowest_cost_node(costs, checked);
+    console.log(node);
     while (node != null) {
         let cost = costs[node];
         let neighbors = Object.assign(graph[node]);
