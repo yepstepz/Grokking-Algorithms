@@ -266,3 +266,64 @@ function cheap_way(graph, costs, parents) {
     }
     return count_way(parents);
 }
+/**
+ * Logical conjunction
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @returns {Array} Result of arr1 && arr2
+ */
+function find_conjunction(arr1, arr2){
+    let b = new Set(arr2);
+    let result = new Set(
+        [...arr1].filter(x => b.has(x))
+    );
+    return [...result]
+}
+/**
+ * Logical disjunction
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @returns {Array} Result of arr1 || arr 2
+ */
+function find_disjunction(arr1, arr2){
+    arr1.push(...arr2);
+    let result = new Set(arr1);
+    return [...result]
+}
+/**
+ * Logical completment
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @returns {Array} Result of arr1 - arr2
+ */
+function find_completment(arr1, arr2){
+    let b = new Set(arr2);
+    let result = new Set(
+        [...arr1].filter(x => !b.has(x))
+    );
+    return [...result]
+}
+/**
+ * Greedy algorithm of station's searching
+ * @param {Array} states_needed
+ * @param {Object} stations
+ * @returns {Array} selected stations
+ */
+function greedy_stations_search(states_needed, stations){
+    let final_stations = [];
+    while (states_needed.length > 0) {
+        let states_covered = [];
+        let best_station = null;
+        for (let station in stations){
+            let covered = find_conjunction( states_needed, stations[station]);
+            if ( covered.length > states_covered.length){
+                best_station = station;
+                states_covered = covered;
+            }
+        }
+        console.log(best_station);
+        states_needed = find_completment(states_needed, states_covered);
+        final_stations.push(best_station);
+    }
+    return final_stations;
+}
