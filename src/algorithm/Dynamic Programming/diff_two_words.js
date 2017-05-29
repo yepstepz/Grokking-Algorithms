@@ -1,13 +1,6 @@
-// import * as list from "./src/algorithm/Greedy algorithm/examples/greedy_states_search_example.js";
-// import greedy_stations_search from "./src/algorithm/Greedy algorithm/greedy_states_search.js";
-function initialize_matrix(rows, cols){
-    let matrix = [];
-    for (let i = 0; i < rows.length; i++){
-        matrix.push(Array(cols.length).fill(0));
-    }
-    return matrix;
-}
-function diff( firstWord, secondWord ){
+import initialize_matrix as base from "./base.js";
+
+export default function diff( firstWord, secondWord ){
     let arr1 = firstWord.split('');
     let arr2 = secondWord.split('');
     let matrix = initialize_matrix(arr1, arr2);
@@ -30,4 +23,3 @@ function diff( firstWord, secondWord ){
     }
     return matrix[arr1.length-1][arr2.length-1];
 }
-//console.log(diff('difish', 'fifosh'));
